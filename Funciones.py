@@ -9,6 +9,8 @@ def menu():
     print("1. Mostrar todos los clientes que han comprado kiwi.")
     print("2. Contar la cantidad de kiwi vendido.")
     print("3. Mostrar el nombre y el DNI de los clientes que empiezan por una subcadena")
+    print("4. Mostrar el nombre de un comprador y la cantidad de fruta que ha comprado")
+    print("5. Mostrar la cantidad maxima de fruta comprada por un cliente")
     print("6. Salir")
     print("----------------------------------------------------")
     opcion = int(input("Introduce tu opcion: "))
@@ -37,3 +39,22 @@ def subcadena():
     for i in datos:
         if i["FirstName"].capitalize().startswith(sub.capitalize()):
             print("Nombre:",i["FirstName"],"- Apellido:",i["LastName"],"- DNI:",i["CartId"])
+
+def compradores():
+    fruta = input("Introduce una fruta ")
+    for i in datos:
+        for x in i["Orders"]:
+          if x["Item"] == fruta:
+            print(i["FullName"],":",x["Quantity"])  
+
+def maxcantidad():
+    cantidad = []
+    nombre = input("Introduce un nombre ")
+    for i in datos:
+        if i["FirstName"] == nombre:
+            for x in i["Orders"]:
+                cantidad.append(x["Quantity"])
+                if x["Quantity"] == max(cantidad):
+                    print("La compra de mas cantidad de",i["FirstName"],"ha sido",x["Item"]) 
+    if i["FirstName"] != nombre:
+        print("No se ha encontrado esa persona")    
