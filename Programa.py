@@ -8,4 +8,8 @@ while opcion > 0 and opcion < 6:
         cantidadkiwi()
     if opcion == 3:
         subcadena()
+    if opcion == 4:
+        compradores()
+    if opcion == 5:
+        maxcantidad()
     opcion = menu()
